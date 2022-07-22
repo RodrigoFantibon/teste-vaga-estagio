@@ -1,0 +1,25 @@
+
+.marginB{
+    margin-bottom: 20px;
+}
+
+.container{
+    margin-top: 40px;
+    width: 900px;
+}
+
+.alinhamento{
+    position: relative;
+    left: 580px ;
+}
+
+.btnSalvarSize{
+    width: 100px;
+}
+
+.edit{
+    border: none;
+   cursor: pointer;
+   color:blue;
+   background-color: white;
+}

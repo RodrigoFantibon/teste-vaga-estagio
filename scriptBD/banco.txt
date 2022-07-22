@@ -1,0 +1,19 @@
+create database cadastroClientes;
+USE cadastroClientes;
+
+const Postagem = sequelize.define('postagens', {
+    titulo: {
+        type: Sequelize.STRING
+    },
+    conteudo: {
+        type: Sequelize.TEXT
+    }
+})
+
+//INSERINDO DADOS NA TABELA POSTAGEM
+// Postagem.create({
+//     titulo: "Um titulo aleatorio",
+//     conteudo: "test inserindo um conteudo"
+// })
+
+// Postagem.sync({force: true}) // garantir que a tabela sera criada
