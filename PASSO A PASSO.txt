@@ -1,0 +1,7 @@
+PASSO 1: Ir na pasta scriptBD, lá vai ter um arquivo para criar a tabela no banco.
+
+PASSO 2: ir na pasta js, ir no arquivo index.js, lá vai ter a conexao com o banco atravez do sequelize, não esqueça de colocar a sua senha na linha 2, para conectar no seu banco.
+
+PASSO 3: Apos iniciar o banco e criar a tabela, vá na pasta js, entre no arquivo index.js e inicie uma vez para iniciar o servidor.
+
+

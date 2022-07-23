@@ -1,10 +1,15 @@
-// const sequelize = require("../conexBD/conex");
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('cadastroClientes', 'root', 'sua senha',{
+    host: "localhost",
+    dialect: 'mysql'
+})
+
 const express = require('express');
 const server = express();
 const empresas = require('../src/data/empresas.json');
 const bodyParser = require ('body-parser');
 server.use (bodyParser.json());
-
+server.use(bodyParser.urlencoded({extended: false}))
 
 //verificar se conectou no banco
 // sequelize.authenticate().then(function(){
@@ -22,19 +27,86 @@ server.use ((req, res, next) => {
 
 
 server.get('/empresas', (req,res) => {
-    // res.sendFile("C:/Users/rodri/OneDrive/Documentos/desafio/cadastroDeUsuarios/html/index.html");  
-return res.json(empresas)
+    const cadastro = sequelize.define('cadEmpresas', {
+        cnpj: {
+            type: Sequelize.INTEGER,
+        },
+        NomeEmpresa: {
+            type: Sequelize.TEXT
+        },
+        cep: {
+            type: Sequelize.INTEGER
+        },
+        Endereco: {
+            type: Sequelize.TEXT
+        },
+        Numero: {
+            type: Sequelize.INTEGER
+        },
+        Bairro: {
+            type: Sequelize.TEXT
+        },
+        uf: {
+            type: Sequelize.TEXT
+        },
+        Cidade: {
+            type: Sequelize.TEXT
+        }
+    })
+
+     var busca  = async () => {
+    const projeto = await cadastro.findAll();
+    console.log(projeto)
+    return res.json(projeto);
+}
+busca();
+// return res.json(empresas) //mostrar os dados do json
 })
 
-server.post('/empresas', (req,res) => { 
-return req.json(empresas)
-})
 
-// server.post ('/empresas', (req, res, next) => {
-//     const empresas = req.body; 
-//     console.log(empresas);
-//     res.status(201).json({mensagem: 'Empresa inserida'})
-//    });
+server.post ('/empresas', (req, res, next) => {
+    empresas.push(req.body);
+    const cadastro = sequelize.define('cadEmpresas', {
+        cnpj: {
+            type: Sequelize.INTEGER,
+        },
+        NomeEmpresa: {
+            type: Sequelize.TEXT
+        },
+        cep: {
+            type: Sequelize.INTEGER
+        },
+        Endereco: {
+            type: Sequelize.TEXT
+        },
+        Numero: {
+            type: Sequelize.INTEGER
+        },
+        Bairro: {
+            type: Sequelize.TEXT
+        },
+        uf: {
+            type: Sequelize.TEXT
+        },
+        Cidade: {
+            type: Sequelize.TEXT
+        }
+    })
+        cadastro.create({
+        cnpj: req.body.cnpj,
+        NomeEmpresa: req.body.NomeEmpresa,
+        cep: req.body.cep,
+        Endereco: req.body.endereco,
+        Numero: req.body.numero,
+        Bairro: req.body.bairro,
+        uf: req.body.uf,
+        Cidade: req.body.cidade
+        })
+    
+    res.status(201).json({mensagem: 'Empresa inserida'})
+   });
+
+
 
 
 
@@ -42,8 +114,6 @@ server.listen(3000, () =>{
     console.log("servidor funcionando");
 });
 
-
-module.exports = server;
 
 
 

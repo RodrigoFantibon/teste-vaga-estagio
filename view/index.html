@@ -1,0 +1,159 @@
+<!DOCTYPE html>   
+<html ng-app="cadClientes">   
+<head>    
+    <meta charset="UTF-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Cadastro de clientes</title>   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">      
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">    
+    <link rel="stylesheet" href="../css/index.css">   
+    <script  src="../js/index.js" defer></script>      
+    <script src="../angularJS/angular.js"></script> 
+    <script src="../conexBD/conex.js"></script> 
+    <script src="../js/app.js"></script>
+    <script src="../js/controllers.js"></script>   
+</head>   
+<body ng-controller="cadClientesController">      
+        
+        <div class="container">   
+            <div id="projeto" >   
+                <div class="panel panel-default">     
+                    <div class="panel-heading">   
+                        <h5 class="panel-title"><i class="fa fa-plus-circle fa-1x" aria-hidden="true" ></i> Formulário de Cadastro</h5>   
+                    </div>    
+                    
+                    <div class="panel-body"><strong>      
+                        <form name="clienteForm" method="POST" action="localhost:3000/empresas">   
+                            <div class="row marginB">     
+                                <div class="col-md-4 ">   
+                                    CNPJ:     
+                                    <input type="text" ng-model="adiciona.cnpj"  class="form-control" name="cnpj" id="txtCNPJ" placeholder="">    
+                                </div>    
+                                <div class="col-md-7 marginB">    
+                                    Nome da empresa:      
+                                    <input type="text" ng-model="adiciona.NomeEmpresa" class="form-control" id="txtNomeEmpresa" name="NomeEmpresa" placeholder="">    
+                                </div>    
+                                <div class="col-md-2  ">      
+                                    CEP:      
+                                    <input type="text" ng-model="adiciona.cep" class="form-control" id="txtCEP" name="CEP"  placeholder="" >      
+                                </div>        
+                                <div class="col-md-6 ">   
+                                    Endereço:     
+                                    <input type="text" ng-model="adiciona.endereco" class="form-control" id="txtEndereco" name="endereco"  placeholder="" >   
+                                </div>        
+                                <div class="col-md-3 ">   
+                                    Número:       
+                                    <input type="text" ng-model="adiciona.numero" class="form-control" id="txtNumero" name="numero"  placeholder="" >     
+                                </div>                            
+                        </div>    
+                            <div class="row marginB ">    
+                                <div class="col-md-6">    
+                                    Bairro    
+                                    <input type="text" ng-model="adiciona.bairro" class="form-control" id="txtBairro" name="bairro" >     
+                                </div>    
+                                
+                                <div class="col-md-2  ">      
+                                    UF:   
+                                    <select class="form-control"  name="UF" ng-model="adiciona.uf">    
+                                        <option value="SP">SP</option>    
+                                        <option value="AC">AC</option>      
+                                        <option value="AL">AL</option>   
+                                        <option value="AP">AP</option>     
+                                        <option value="AM">AM</option>      
+                                        <option value="BA">BA</option>     
+                                        <option value="CE">CE</option>     
+                                        <option value="DF">DF</option>   
+                                        <option value="ES">ES</option>     
+                                        <option value="GO">GO</option>     
+                                        <option value="MA">MA</option>      
+                                        <option value="MT">MT</option>   
+                                        <option value="MS">MS</option>    
+                                        <option value="MG">MG</option>      
+                                        <option value="PA">PA</option>      
+                                        <option value="PB">PB</option>   
+                                        <option value="PR">PR</option>    
+                                        <option value="PE">PE</option>    
+                                        <option value="PI">PI</option>     
+                                        <option value="RJ">RJ</option>      
+                                        <option value="RN">RN</option>      
+                                        <option value="RS">RS</option>    
+                                        <option value="RO">RO</option>      
+                                        <option value="RR">RR</option>   
+                                        <option value="SC">SC</option>     
+                                        <option value="SP">SP</option>      
+                                        <option value="SE">SE</option>   
+                                        <option value="TO">TO</option>     
+                                        <option value="EX">EX</option>   
+                                    </select>     
+                                </div>    
+                                <div class="col-md-3 marginB">    
+                                    Cidade:       
+                                    <select class="form-control "  name="cidade" ng-model="adiciona.cidade" >    
+                                        <option value="São Paulo">São Paulo</option>   
+                                        <option value="Acre">Acre</option>      
+                                        <option value="Alagoas">Alagoas</option>   
+                                        <option value="Amapá">Amapá</option>     
+                                        <option value="Amazonas">Amazonas</option>      
+                                        <option value="Bahia">Bahia</option>     
+                                        <option value="Ceará">Ceará</option>     
+                                        <option value="Federal">Distrito Federal</option>      
+                                        <option value="Espírito Santo">Espírito Santo</option>    
+                                        <option value="Goiás">Goiás</option>     
+                                        <option value="Maranhão">Maranhão</option>      
+                                        <option value="Mato Grosso">Mato Grosso</option>   
+                                        <option value="Mato grosso do Sul">Mato Grosso do Sul</option>    
+                                        <option value="Minas Gerais">Minas Gerais</option>      
+                                        <option value="Pará">Pará</option>      
+                                        <option value="Paraíba">Paraíba</option>   
+                                        <option value="Paraná">Paraná</option>    
+                                        <option value="Pernambuco">Pernambuco</option>    
+                                        <option value="Piauí">Piauí</option>     
+                                        <option value="Rio de Janeiro">Rio de Janeiro</option>    
+                                        <option value="Rio Grande do Norte">Rio Grande do Norte</option>   
+                                        <option value="Rio Grande do Sul">Rio Grande do Sul</option>     
+                                        <option value="Rondônia">Rondônia</option>      
+                                        <option value="Roraima">Roraima</option>   
+                                        <option value="Santana Catarina">Santa Catarina</option>    
+                                        <option value="São Paulo">São Paulo</option>     
+                                        <option value="Sergipe">Sergipe</option>   
+                                        <option value="Tocantins">Tocantins</option>     
+                                        <option value="Estrangeiro">Estrangeiro</option>   
+                                    </select>     
+                                </div>                                
+                            </div>    
+                            <div class="alinhamento">     
+                                <button class="btn btn-md btn-default border" ng-click="deleteCliente(adiciona)"><i class="fa fa-times-circle" aria-hidden="true"></i>Cancelar</button>                 
+                                <button class="btn btn-primary btnSalvarSize" id="send" ng-click="adicionarCliente(adiciona)"  ng-disabled="!adiciona.cnpj || !adiciona.NomeEmpresa"><i class="fa fa-floppy-o" aria-hidden="true"></i> Salvar</button>    
+                            </div>    
+                            </div>    
+                        </form>   
+                    </strong>     
+                    </div>    
+                </div>    
+                <br>      
+                Empresas Cadastradas      
+                <strong>      
+                        <table class="table table-bordered table-striped table-responsive">   
+                        <tr>      
+                            <td style="text-align:center;">CNPJ</td>      
+                            <td style="text-align:center;" >Nome da Empresa</td>      
+                            <td style="text-align:center;">Acoes</td>     
+                            </td>                                 
+                        </tr>     
+                        <tr ng-repeat="adiciona in adicionar">    
+                            <td>{{adiciona.cnpj}}</td>    
+                            <td>{{adiciona.NomeEmpresa}}</td>     
+                            <td style="text-align:center"> <button class="edit" type="button"><u>Edit</u></button></td>   
+                        </table>                          
+                    </div>    
+                </div>    
+            </div>    
+                        </strong>     
+                        </div>    
+                    </div>    
+                </div>    
+            </div>    
+        </div>    
+</body>   
+</html>   

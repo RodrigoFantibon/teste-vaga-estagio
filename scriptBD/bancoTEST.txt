@@ -1,0 +1,16 @@
+create database cadClientes;
+use cadClientes;		
+
+
+CREATE TABLE cadempresas (
+    id int NOT NULL AUTO_INCREMENT,
+    cnpj DOUBLE,
+    NomeEmpresa varchar(255),
+    cep DOUBLE,
+    Endereco varchar(255),
+    Numero DOUBLE,
+	Bairro varchar(255),	
+	uf varchar(255),
+    cidade varchar(255),
+    PRIMARY KEY (id)
+);
